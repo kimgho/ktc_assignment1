@@ -35,7 +35,7 @@ export const getSearchMovies = async (query) => {
         return response.results;
     } catch (error) {
         console.error('영화 검색 중 오류 발생:', error);
-        throw new ErrorHandler('영확 검색 실패', {
+        throw new ErrorHandler('영화 검색 실패', {
             originalError: error.message,
             name: error.name,
             type: 'SEARCH MOVIE FETCH ERROR'
