@@ -8,3 +8,7 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
 }
+
+.page-title {
+    padding-top: 20px;
+}
