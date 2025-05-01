@@ -1,0 +1,45 @@
+@media (max-width: 768px) {
+    .movie-top-section {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .movie-modal-content {
+        padding: 20px;
+    }
+
+    .movie-poster-large {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 180px;
+        align-self: center;
+    }
+
+    .movie-details {
+        padding-top: 0;
+    }
+
+    .movie-cast h3 {
+        margin-top: 10px;
+    }
+
+    .movie-modal {
+        max-height: 95vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-poster-large {
+        width: 150px;
+    }
+
+    .movie-modal-content {
+        padding: 15px;
+    }
+
+    .modal-close-btn {
+        font-size: 25px;
+        top: 5px;
+        right: 10px;
+    }
+}
