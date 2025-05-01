@@ -1,6 +1,5 @@
-import { baseFetch } from './client.js';
-import { ErrorHandler } from '../utils/ErrorHandler.js';
-import { IMAGE_BASE_URL } from "../consts";
+import { baseFetch, ErrorHandler } from './index.js';
+import { IMAGE_BASE_URL } from "../consts/index.js";
 
 /**
  * 인기 영화 GET 요청
@@ -50,8 +49,7 @@ export const getSearchMovies = async (query) => {
  */
 export const getMovieDetails = async (movieId) => {
     try {
-        const data = await baseFetch(`/movie/${movieId}`);
-        // TODO : append_to_response를 추가해서 상세 정보에 더 필요한 내용(주요 배우 등) ?
+        const data = await baseFetch(`/movie/${movieId}`, { append_to_response: 'credits' });
         console.log('영화 상세 정보:', data);
         return data;
     } catch (error) {
