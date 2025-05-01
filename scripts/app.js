@@ -1,5 +1,6 @@
 import { getPopularMovies } from './api/index.js';
 import { displayMovies } from './components/MovieList.js';
+import { searchHandler } from './utils/searchHandler.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   App();
@@ -7,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function App() {
   try {
+    searchHandler();
     const movies = await getPopularMovies();
     displayMovies(movies);
   } catch (error) {
