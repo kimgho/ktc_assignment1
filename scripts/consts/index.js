@@ -1,2 +1,2 @@
-export * from './apiSetting'
-export * from './apiKey'
+export * from './apiSetting.js'
+export * from './apiKey.js'

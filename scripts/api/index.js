@@ -4,4 +4,6 @@ export {
     getSearchMovies,
     getMovieDetails,
     getImageUrl
-} from './movies.js';
+} from './api.js';
+
+export { ErrorHandler } from "./ErrorHandler.js"

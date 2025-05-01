@@ -1,5 +1,5 @@
-import { ErrorHandler } from '../utils/ErrorHandler.js';
-import { API_KEY, BASE_URL, SET_LANGUAGE } from "../consts";
+import { ErrorHandler } from './index.js';
+import { API_KEY, BASE_URL, SET_LANGUAGE } from "../consts/index.js";
 
 export const baseFetch = async (endpoint, params = {}) => {
     let queryString = `api_key=${API_KEY}&${SET_LANGUAGE}`;
