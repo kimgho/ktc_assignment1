@@ -7,7 +7,12 @@
     <title>영화 검색 사이트</title>
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/header.css">
-
+    <link rel="stylesheet" href="../styles/movie-list.css">
+    <link rel="stylesheet" href="../styles/movie-modal-content.css">
+    <link rel="stylesheet" href="../styles/movie-modal-base.css">
+    <link rel="stylesheet" href="../styles/movie-modal-actor.css">
+    <link rel="stylesheet" href="../styles/movie-modal-responsive.css">
+    <link rel="stylesheet" href="../styles/footer.css">
 </head>
 
 <body>
@@ -35,6 +40,18 @@
         </div>
     </header>
 
+    <main class="container">
+        <h1 class="page-title">인기 영화</h1>
+        <div id="result"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>TMDB API를 사용한 영화 검색 사이트</p>
+        </div>
+    </footer>
+
+    <script type="module" src="../scripts/app.js"></script>
 </body>
 
 </html>
