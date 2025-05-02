@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영화 검색 사이트</title>
+    <title id="page-title">영화 검색 결과</title>
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/movie-list.css">
@@ -41,10 +41,11 @@
     </header>
 
     <main class="container">
-        <h1 class="page-title">인기 영화</h1>
-        <div id="popular-movies-result"></div>
-        <h1 class="page-title">TOP Rate영화</h1>
-        <div id="top-rated-movies-result"></div>
+        <div class="back-btn-container">
+            <button id="back-btn">뒤로 가기</button>
+            <h1 class="page-title" id="search-results-title">검색 결과</h1>
+        </div>
+        <div id="search-results-container"></div>
     </main>
 
     <footer class="footer">
@@ -53,6 +54,9 @@
         </div>
     </footer>
 
+    <script type="module" src="../scripts/SearchResult.js"></script>
+    <script type="module" src="../scripts/components/MovieCard.js"></script>
+    <script type="module" src="../scripts/components/MovieList.js"></script>
     <script type="module" src="../scripts/app.js"></script>
 </body>
 
