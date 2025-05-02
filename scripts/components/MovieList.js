@@ -1,7 +1,9 @@
 import "./MovieCard.js"
 
-export const displayMovies = (movies) => {
-    const resultDiv = document.getElementById('result');
+export const displayMovies = (movies, containerId) => {
+    const resultDiv = document.getElementById(containerId);
+    if (!resultDiv) return;
+
     resultDiv.innerHTML = '';
 
     if (!movies || movies.length === 0) {
