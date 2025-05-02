@@ -21,6 +21,25 @@ export const getPopularMovies = async () => {
 }
 
 /**
+ * top rated 영화 GET요청
+ * @returns top rated 영화 목록
+ */
+export const getTopRatedMovies = async () => {
+    try {
+        const response = await baseFetch('/movie/top_rated');
+        console.log('top rated 목록', response);
+        return response.results;
+    } catch (error) {
+        console.error('top rated 영화 목록을 가져오는 중 오류 발생', error);
+        throw new ErrorHandler('top rated 영화 가져오기 실패', {
+            originalError: error.message,
+            name: error.name,
+            type: 'TOP RATED MOVIE FETCH ERROR',
+        })
+    }
+}
+
+/**
  * 영화 검색 GET 요청
  * @param {string} query (영화 제목)
  * @returns 검색 영화 정보
