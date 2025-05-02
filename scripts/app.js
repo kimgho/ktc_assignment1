@@ -1,4 +1,4 @@
-import { fetchMovies } from './api/fetchMovies.js';
+import { fetchMovies } from './api/index.js';
 import { displayMovies } from './components/MovieList.js';
 import { searchHandler } from './utils/searchHandler.js';
 
