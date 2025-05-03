@@ -45,24 +45,28 @@ export class MovieCard extends HTMLElement {
       }
       
       .movie-card {
-        background-color: #fff;
+        background-color: #1e1e1e;
         border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         overflow: hidden;
-        transition: transform 0.3s ease;
+        transition: all 0.3s ease;
         cursor: pointer;
         display: flex;
         flex-direction: column;
         height: 100%;
+        border: 1px solid #333;
       }
       
       .movie-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        border-color: #444;
       }
       
       .movie-poster {
         height: 300px;
         overflow: hidden;
+        position: relative;
       }
       
       .movie-poster img {
@@ -76,7 +80,7 @@ export class MovieCard extends HTMLElement {
         align-items: center;
         justify-content: center;
         height: 100%;
-        background-color: #f0f0f0;
+        background-color: #2a2a2a;
         color: #999;
         text-align: center;
         padding: 10px;
@@ -87,6 +91,7 @@ export class MovieCard extends HTMLElement {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
+        background-color: #1e1e1e;
       }
       
       .title-row {
@@ -104,6 +109,7 @@ export class MovieCard extends HTMLElement {
         text-overflow: ellipsis;
         white-space: nowrap;
         flex-grow: 1;
+        color: #f8f8f8;
       }
       
       .bookmark-icon {
@@ -111,7 +117,7 @@ export class MovieCard extends HTMLElement {
         border: none;
         font-size: 18px;
         cursor: pointer;
-        color: #ccc;
+        color: #666;
         padding: 0 4px;
         transition: color 0.2s, transform 0.2s;
         margin-left: 5px;
@@ -119,6 +125,7 @@ export class MovieCard extends HTMLElement {
       
       .bookmark-icon:hover {
         transform: scale(1.2);
+        color: #ffb400;
       }
       
       .bookmark-icon.active {
@@ -128,7 +135,7 @@ export class MovieCard extends HTMLElement {
       .movie-rating,
       .movie-release-date {
         font-size: 14px;
-        color: #666;
+        color: #aaa;
         margin-bottom: 5px;
       }
       
@@ -142,6 +149,7 @@ export class MovieCard extends HTMLElement {
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         flex-grow: 1;
+        color: #ccc;
       }
     `;
 

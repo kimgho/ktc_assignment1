@@ -1,6 +1,35 @@
 .movie-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 25px;
     margin-top: 20px;
+}
+
+@media (max-width: 640px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}
+
+#search-results-container,
+#popular-movies-result,
+#top-rated-movies-result {
+    min-height: 200px;
+}
+
+#search-results-container p,
+#popular-movies-result p,
+#top-rated-movies-result p {
+    text-align: center;
+    padding: 40px 0;
+    color: #999;
+    font-style: italic;
+}
+
+.section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ef4444, transparent);
+    margin: 40px 0;
+    opacity: 0.5;
 }
