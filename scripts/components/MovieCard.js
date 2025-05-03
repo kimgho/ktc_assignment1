@@ -1,7 +1,5 @@
 import { getImageUrl } from '../api/index.js';
-import { showMovieDetails } from './MovieDetailModal.js';
-import { getBookmarkedMovies, toggleBookmark } from '../utils/index.js';
-import { debounce } from '../utils/debounce.js';
+import { getBookmarkedMovies } from '../utils/index.js';
 
 export class MovieCard extends HTMLElement {
   constructor() {
@@ -25,7 +23,8 @@ export class MovieCard extends HTMLElement {
 
   get movieData() {
     try {
-      return JSON.parse(this.getAttribute('movie-data') || '{}');
+      const data = this.getAttribute('movie-data');
+      return data ? JSON.parse(data) : {};
     } catch (error) {
       console.error('영화 정보 가져오기 에러 - ', error);
       return {};
@@ -169,57 +168,17 @@ export class MovieCard extends HTMLElement {
       </div>
     `;
 
-    this.addEventListeners();
   }
-
-  addEventListeners() {
-    const movieCard = this.shadowRoot.querySelector('.movie-card');
-    const bookmarkButton = this.shadowRoot.querySelector('.bookmark-icon');
-
-    if (movieCard && bookmarkButton) {
-      const debouncedMovieCardClick = debounce(this.handleMovieCardClick.bind(this));
-      const debouncedBookmarkClick = debounce(this.handleBookmarkClick.bind(this));
-      movieCard.addEventListener('click', (event) => {
-        if (event.target === bookmarkButton || bookmarkButton.contains(event.target)) {
-          event.stopPropagation();
-        } else {
-          debouncedMovieCardClick();
-        }
-      });
-
-      bookmarkButton.addEventListener('click', (event) => {
-        event.stopPropagation();
-        debouncedBookmarkClick();
-      });
-    }
-  }
-
-  handleBookmarkClick() {
+  updateBookmarkIcon() {
     const movie = this.movieData;
-    if (movie && movie.id) {
-      toggleBookmark(movie.id);
+    if (!movie || !movie.id) return;
 
-      const bookmarkButton = this.shadowRoot.querySelector('.bookmark-icon');
+    const bookmarkBtn = this.shadowRoot.querySelector('.bookmark-icon');
+    if (bookmarkBtn) {
       const bookmarkedMovies = getBookmarkedMovies();
       const isBookmarked = bookmarkedMovies.includes(movie.id);
-
-      if (bookmarkButton) {
-        bookmarkButton.textContent = isBookmarked ? '★' : '☆';
-        bookmarkButton.classList.toggle('active', isBookmarked);
-      }
-
-      this.dispatchEvent(new CustomEvent('bookmarkChanged', {
-        bubbles: true,
-        composed: true,
-        detail: { movieId: movie.id, isBookmarked }
-      }));
-    }
-  }
-
-  handleMovieCardClick() {
-    const movie = this.movieData;
-    if (movie && movie.id) {
-      showMovieDetails(movie.id);
+      bookmarkBtn.textContent = isBookmarked ? '★' : '☆';
+      bookmarkBtn.classList.toggle('active', isBookmarked);
     }
   }
 }

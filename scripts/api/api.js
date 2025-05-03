@@ -1,5 +1,5 @@
 import { baseFetch, ErrorHandler } from './index.js';
-import { IMAGE_BASE_URL } from "../consts/index.js";
+import { IMAGE_BASE_URL } from "../constants/index.js";
 
 /**
  * 인기 영화 GET 요청
