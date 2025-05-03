@@ -1,5 +1,7 @@
 import { getMovieDetails, getImageUrl } from '../api/index.js';
 
+let isGlobalListenersSet = false;
+
 export const showMovieDetails = async (movieId) => {
     try {
         const movie = await getMovieDetails(movieId);
@@ -13,7 +15,7 @@ export const showMovieDetails = async (movieId) => {
                 <div class="actor-card">
                     <div class="actor-profile-image">
                         ${profileImageUrl ?
-                    `<img src="${profileImageUrl}" alt="${actor.name} loading="eager"">` :
+                    `<img src="${profileImageUrl}" alt="${actor.name}" loading="eager">` :
                     '<div class="no-profile-image">이미지 없음</div>'}
                     </div>
                     <div class="actor-info">
@@ -33,10 +35,10 @@ export const showMovieDetails = async (movieId) => {
         }
 
         modalContainer.innerHTML = generateMovieModalHtml(movie, actorCardsHtml);
-
         modalContainer.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-        setupModalEventListeners(modalContainer);
+
+        setupGlobalListeners();
 
     } catch (error) {
         console.error('영화 상세 정보를 가져오는 중 오류 발생:', error);
@@ -86,26 +88,35 @@ const generateMovieModalHtml = (movie, actorCardsHtml) => {
     `;
 }
 
-const setupModalEventListeners = (modalContainer) => {
-    const closeBtn = modalContainer.querySelector('.modal-close-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            closeModal(modalContainer);
-        });
-    }
-
-    modalContainer.addEventListener('click', (e) => {
-        if (e.target === modalContainer) {
-            closeModal(modalContainer);
-        }
-    });
+const setupGlobalListeners = () => {
+    if (isGlobalListenersSet) return;
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalContainer.style.display === 'flex') {
-            closeModal(modalContainer);
+        if (e.key === 'Escape') {
+            const modalContainer = document.getElementById('movie-modal-container');
+            if (modalContainer && modalContainer.style.display === 'flex') {
+                closeModal(modalContainer);
+            }
         }
     });
-}
+
+    document.body.addEventListener('click', (e) => {
+        const modalContainer = document.getElementById('movie-modal-container');
+        if (!modalContainer || modalContainer.style.display !== 'flex') return;
+
+        if (e.target.classList.contains('modal-close-btn')) {
+            closeModal(modalContainer);
+            return;
+        }
+
+        if (e.target === modalContainer) {
+            closeModal(modalContainer);
+            return;
+        }
+    });
+
+    isGlobalListenersSet = true;
+};
 
 const closeModal = (modalContainer) => {
     modalContainer.style.display = 'none';
