@@ -1,6 +1,8 @@
 # ktc_assignment1
 
 카카오테크캠퍼스 FE 1차 과제
+
+![Image](https://github.com/user-attachments/assets/8a4c20bb-68b6-49fc-adae-40c6c7fd479b)
 ---
 # 🎬 영화 검색 사이트 만들기
 
