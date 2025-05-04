@@ -42,7 +42,6 @@ export const displayMovies = (movies, containerId) => {
                 if (typeof movieCardElement.updateBookmarkIcon === 'function') {
                     movieCardElement.updateBookmarkIcon();
                     const isBookmarked = getBookmarkedMovies().includes(movieId);
-                    console.log(`${movieId} bookMarked to ${isBookmarked}`);
                 }
             }
         } else {

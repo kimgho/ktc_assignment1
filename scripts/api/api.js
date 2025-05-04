@@ -8,7 +8,6 @@ import { IMAGE_BASE_URL } from "../constants/index.js";
 export const getPopularMovies = async () => {
     try {
         const response = await baseFetch('/movie/popular');
-        console.log('인기 영화 목록', response);
         return response.results;
     } catch (error) {
         console.error('인기 영화 목록을 가져오는 중 오류 발생:', error);
@@ -27,7 +26,6 @@ export const getPopularMovies = async () => {
 export const getTopRatedMovies = async () => {
     try {
         const response = await baseFetch('/movie/top_rated');
-        console.log('top rated 목록', response);
         return response.results;
     } catch (error) {
         console.error('top rated 영화 목록을 가져오는 중 오류 발생', error);
@@ -49,7 +47,6 @@ export const getSearchMovies = async (query) => {
         const response = await baseFetch('/search/movie', {
             query: query
         });
-        console.log('검색 결과:', response);
         return response.results;
     } catch (error) {
         console.error('영화 검색 중 오류 발생:', error);
@@ -69,7 +66,6 @@ export const getSearchMovies = async (query) => {
 export const getMovieDetails = async (movieId) => {
     try {
         const data = await baseFetch(`/movie/${movieId}`, { append_to_response: 'credits' });
-        console.log('영화 상세 정보:', data);
         return data;
     } catch (error) {
         console.error('영화 상세 정보를 가져오는 중 오류 발생:', error);
